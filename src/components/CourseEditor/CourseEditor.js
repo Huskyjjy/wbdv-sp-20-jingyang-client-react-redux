@@ -7,6 +7,7 @@ import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import LessonTabs from "./LessonTabs";
 import TopicPills from "./TopicPills";
+import CourseHeading from './CourseHeading'
 
 const rootReducer = combineReducers({
     modules: moduleReducer,
@@ -15,14 +16,13 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer)
 
-const CourseEditor = ({hideCourseEditor, match, history, courseId, moduleId, lessonId}) =>
+const CourseEditor = ({match, history, courseId, moduleId, lessonId}) =>
     <Provider store={store}>
         <div>
-            <a href="/">
-                Back
-            </a>
-            <button onClick={() => history.push("/")}>Close</button>
-            <h2>Course Editor {match.params.courseId}</h2>
+            <button onClick={() => history.push("/")}>
+                <i className="fa fa-times"></i>
+            </button>
+            <CourseHeading courseId={courseId}/>
             <div className="row">
                 <div className="col-4">
                     <h4>Module List</h4>

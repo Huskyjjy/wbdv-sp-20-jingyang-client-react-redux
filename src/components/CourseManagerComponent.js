@@ -1,7 +1,6 @@
 import React from "react";
-import CourseManagerHeading from "./CourseManagerHeading";
 import CourseTableComponent from "./CourseTableComponent";
-import CourseGridComponent from "./CourseGridComponent";
+import CourseGridComponent from "../components/CourseList/CourseGridComponent";
 import CourseEditor from "./CourseEditor/CourseEditor";
 import {deleteCourse, createCourse, findAllCourses} from "../services/CourseService"
 import CourseListComponent from "./CourseListComponent";
@@ -15,6 +14,7 @@ class CourseManagerComponent extends React.Component {
         editingCourse: false,
         newCourseTitle: 'Whatever',
         courses: []
+
     }
 
     componentDidMount = async () => {
@@ -29,7 +29,6 @@ class CourseManagerComponent extends React.Component {
         //         courses: courses
         //     }))
     }
-
     deleteCourse = async (deletedCourse) => {
         const status = await deleteCourse(deletedCourse._id)
         const courses = await findAllCourses()

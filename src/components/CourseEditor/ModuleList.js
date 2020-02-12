@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {CREATE_MODULE, createModule, DELETE_MODULE, deleteModule} from "../../actions/moduleActions";
 import moduleService, {findModuleForCourse} from '../../services/ModuleService'
+import ModuleListItem from './ModuleListItem'
 
 class ModuleList extends React.Component {
     componentDidMount() {
@@ -10,20 +11,21 @@ class ModuleList extends React.Component {
 
     render() {
         return (
-            <ul>
-                {this.props.modules && this.props.modules.map(module =>
-                    <li key={module._id}>
-                        <button onClick={
-                            () => this.props.deleteModule(module._id)}>
-                            Delete
-                        </button>
-                        {module.title}
-                    </li>
-                )}
-                <li>
-                    <button onClick={
-                        () => this.props.createModule(this.props.courseId)}>
-                        Create</button>
+            <ul className="list-group">
+                {
+                    this.props.modules.map(module =>
+                        <ModuleListItem
+                            key={module._id}
+                            module={module}
+                            deleteModule={this.props.deleteModule}/>
+                    )
+                }
+                <li className="list-group-item">
+                    <button className="float-right" onClick={
+                        () => this.props.createModule(this.props.courseId)
+                    }>
+                        <li className="fa fa-plus"></li>
+                    </button>
                 </li>
             </ul>
         );
@@ -45,7 +47,7 @@ const dispatchToPropertyMapper = (dispatch) => {
                     modules: actualModules
                 })),
         findAllModules: () =>
-            // TODO: move all server access to ModuleService.js
+
             fetch("https://wbdv-generic-server.herokuapp.com/api/jannunzi/modules")
                 .then(response => response.json())
                 .then(actualModules =>

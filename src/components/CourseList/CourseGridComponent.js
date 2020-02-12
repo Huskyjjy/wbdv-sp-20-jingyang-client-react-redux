@@ -1,5 +1,5 @@
 import React from "react";
-import CourseCard from './CourseCard'
+import CourseCard from '../CourseCard'
 import '../css/gridstyle.css'
 
 const CourseGridComponent = ({toggle, courses, deleteCourse, showCourseEditor}) =>
