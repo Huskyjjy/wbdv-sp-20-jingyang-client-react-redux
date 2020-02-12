@@ -1,6 +1,6 @@
 import React from "react";
-import CourseCard from '../CourseCard'
-import '../css/gridstyle.css'
+import CourseCard from './CourseCard';
+import '../../css/gridstyle.css'
 
 const CourseGridComponent = ({toggle, courses, deleteCourse, showCourseEditor}) =>
     <div className="container-fluid">

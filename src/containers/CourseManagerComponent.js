@@ -1,11 +1,10 @@
 import React from "react";
-import CourseTableComponent from "./CourseTableComponent";
+import CourseTableComponent from "../components/CourseList/CourseTableComponent";
 import CourseGridComponent from "../components/CourseList/CourseGridComponent";
-import CourseEditor from "./CourseEditor/CourseEditor";
+import CourseEditor from "../components/CourseEditor/CourseEditor";
 import {deleteCourse, createCourse, findAllCourses} from "../services/CourseService"
-import CourseListComponent from "./CourseListComponent";
-import Page1 from "./Page1";
-import Page2 from "./Page2";
+import CourseListComponent from "../components/CourseList/CourseListComponent";
+
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 
 class CourseManagerComponent extends React.Component {

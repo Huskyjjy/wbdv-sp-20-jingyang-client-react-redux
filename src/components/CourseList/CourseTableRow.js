@@ -1,8 +1,8 @@
 import React from "react";
-import {updateCourse} from "../services/CourseService";
+import {updateCourse} from "../../services/CourseService";
 import {Link} from "react-router-dom";
-import "../css/tablestyle.css";
-import "../css/style.css"
+import "../../css/tablestyle.css";
+import "../../css/style.css"
 
 class CourseTableRow extends React.Component {
     constructor(props) {

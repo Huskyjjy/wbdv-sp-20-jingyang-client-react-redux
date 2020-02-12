@@ -1,5 +1,4 @@
 import React from "react";
-import ModuleList from "./ModuleList";
 import './CourseEditor.css'
 import moduleReducer from "../../reducers/moduleReducer";
 import lessonReducer from "../../reducers/lessonReducer";
@@ -8,6 +7,7 @@ import {Provider} from "react-redux";
 import LessonTabs from "./LessonTabs";
 import TopicPills from "./TopicPills";
 import CourseHeading from './CourseHeading'
+import ModuleListContainer from '../../containers/ModuleListContainer'
 
 const rootReducer = combineReducers({
     modules: moduleReducer,
@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer)
 
-const CourseEditor = ({match, history, courseId, moduleId, lessonId}) =>
+const CourseEditor = ({hideEditor, match, history, courseId, moduleId, lessonId}) =>
     <Provider store={store}>
         <div>
             <button onClick={() => history.push("/")}>
@@ -26,13 +26,14 @@ const CourseEditor = ({match, history, courseId, moduleId, lessonId}) =>
             <div className="row">
                 <div className="col-4">
                     <h4>Module List</h4>
-                    <ModuleList
-                        courseId={courseId}/>
+                    <ModuleListContainer
+                        courseId={courseId}
+                        history={history}
+                        moduleId={moduleId}/>
                 </div>
                 <div className="col-8">
                     <LessonTabs
-                        moduleId={moduleId}
-                        courseId={courseId}/>
+                        moduleId={moduleId}/>
                     <TopicPills
                         lessonId={lessonId}
                         moduleId={moduleId}

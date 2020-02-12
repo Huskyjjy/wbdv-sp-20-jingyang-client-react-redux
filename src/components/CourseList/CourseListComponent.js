@@ -1,6 +1,6 @@
 import CourseManagerHeading from "./CourseManagerHeading";
 import CourseTableComponent from "./CourseTableComponent";
-import CourseGridComponent from "../components/CourseList/CourseGridComponent";
+import CourseGridComponent from "./CourseGridComponent";
 import React from "react";
 
 const CourseListComponent =
