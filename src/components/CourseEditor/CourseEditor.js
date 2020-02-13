@@ -2,16 +2,18 @@ import React from "react";
 import './CourseEditor.css'
 import moduleReducer from "../../reducers/moduleReducer";
 import lessonReducer from "../../reducers/lessonReducer";
+import topicReducer from "../../reducers/topicReducer";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import LessonTabs from "./LessonTabs";
-import TopicPills from "./TopicPills";
-import CourseHeading from './CourseHeading'
-import ModuleListContainer from '../../containers/ModuleListContainer'
+import CourseHeading from './CourseHeading';
+import ModuleListContainer from '../../containers/ModuleListContainer';
+import TopicPillContainer from '../../containers/TopicPillContainer';
 
 const rootReducer = combineReducers({
     modules: moduleReducer,
-    lessons: lessonReducer
+    lessons: lessonReducer,
+    topics: topicReducer
 })
 
 const store = createStore(rootReducer)
@@ -28,16 +30,19 @@ const CourseEditor = ({hideEditor, match, history, courseId, moduleId, lessonId}
                     <h4>Module List</h4>
                     <ModuleListContainer
                         courseId={courseId}
-                        history={history}
-                        moduleId={moduleId}/>
+                        history={history}/>
                 </div>
                 <div className="col-8">
                     <LessonTabs
-                        moduleId={moduleId}/>
-                    <TopicPills
+                        courseId={courseId}
+                        history={history}
+                        moduleId={moduleId}
+                        />
+                    <TopicPillContainer
                         lessonId={lessonId}
                         moduleId={moduleId}
-                        courseId={courseId}/>
+                        courseId={courseId}
+                        history={history}/>
                 </div>
             </div>
         </div>

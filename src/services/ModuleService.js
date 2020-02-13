@@ -28,10 +28,14 @@ export const updateModule = async (moduleId, module) =>
     })
         return await response.json()
 }
-
+export const findModule = async (moduleId) => {
+    const response = await fetch(`${MODULES_API_URL}/${moduleId}`)
+    return await response.json()
+}
 export default {
     createModule,
     deleteModule,
     findModuleForCourse,
-    updateModule
+    updateModule,
+    findModule
 }

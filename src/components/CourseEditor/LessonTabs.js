@@ -31,9 +31,15 @@ class LessonTabs extends React.Component {
                 {
                     this.props.lessons && this.props.lessons.map(lesson =>
                         <li className={`nav-item`}
-                            onClick={() => this.setState({
-                                selectedLessonId: lesson._id
-                            })}
+                            onClick={() => 
+                                {
+                                    const lessonId = lesson._id
+                                    this.props.history.push(`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${lessonId}`)
+                                    this.setState({
+                                        selectedLessonId: lesson._id
+                                    })
+                                }
+                            }
                             key={lesson._id}>
                             <a className={`nav-link
                                             ${(this.state.editingLessonId === lesson._id || this.state.selectedLessonId === lesson._id)?'active':''}`}>
@@ -72,6 +78,8 @@ class LessonTabs extends React.Component {
                                 </button>}
                                 {this.state.editingLessonId !== lesson._id && 
                                 <button onClick={() => {
+                                    const lessonId = lesson._id
+                                    this.props.history.push(`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${lessonId}`)
                                     this.setState({
                                         lesson: lesson,
                                         currID: lesson._id,

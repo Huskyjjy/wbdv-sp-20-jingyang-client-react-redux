@@ -31,6 +31,10 @@ export const deleteLesson = async (lessonId) =>
     })
     return await response.json()
 }
+export const findLesson = async (lessonId) => {
+    const response = await fetch(`${LESSONS_API_URL}/${lessonId}`)
+    return await response.json()
+}
 export default {
-    findLessonsForModule, createLesson, updateLesson
+    findLessonsForModule, createLesson, updateLesson, deleteLesson
 }

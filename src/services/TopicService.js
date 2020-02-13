@@ -28,7 +28,10 @@ export const updateTopic = async (topicId, topic) =>
     })
         return await response.json()
 }
-
+export const findTopic = async (topicId) => {
+    const response = await fetch(`${TOPICS_API_URL}/${topicId}`)
+    return await response.json()
+}
 export default {
     createTopic,
     deleteTopic,
