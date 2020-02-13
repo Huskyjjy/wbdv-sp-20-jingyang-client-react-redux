@@ -7,7 +7,9 @@ export default class TopicPillComponent extends React.Component {
     componentDidMount() {
         this.props.findTopicsForLesson(this.props.lessonId)
     }
-    
+    componentDidUpdate(prevProps, prevState, snapshot){
+        this.props.findTopicsForLesson(this.props.lessonId)
+    }
     state = {
         activeTopicId: this.props.topicId,
         editingTopicId: '',
@@ -20,12 +22,8 @@ export default class TopicPillComponent extends React.Component {
                 {
                     this.props.topics && this.props.topics.map(topic =>
                         <li className={`nav-item`}
-                           
                             onClick={
                                 () => {
-                                    console.log(topic._id)
-                                    const topicId = topic._id
-                                    this.props.history.push(`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${topicId}`)
                                     this.setState({
                                         activeTopicId: topic._id
                                     })
@@ -81,7 +79,7 @@ export default class TopicPillComponent extends React.Component {
                     <button className="float-right" onClick={
                         () => this.props.createTopic(this.props.lessonId, {title: 'New Topic'})
                     }>
-                        <li className="fa fa-plus"></li>
+                        <i className="fa fa-plus"></i>
                     </button>
                 </li>
             </ul>

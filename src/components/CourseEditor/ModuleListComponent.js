@@ -82,7 +82,7 @@ export default class ModuleListComponent extends React.Component {
                     <button className="float-right" onClick={
                         () => this.props.createModule(this.props.courseId, {title: 'New Module'})
                     }>
-                        <li className="fa fa-plus"></li>
+                        <i className="fa fa-plus"></i>
                     </button>
                 </li>
             </ul>

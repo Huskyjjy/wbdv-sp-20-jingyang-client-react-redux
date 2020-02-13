@@ -10,10 +10,8 @@ class LessonTabs extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-    if(this.props.moduleId !== prevProps.moduleId) {
-            this.props.findLessonsForModule(this.props.moduleId)
-        }
-        
+        this.props.findLessonsForModule(this.props.moduleId)
+
     }
 
     state = {
