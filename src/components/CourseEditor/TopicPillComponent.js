@@ -8,7 +8,9 @@ export default class TopicPillComponent extends React.Component {
         this.props.findTopicsForLesson(this.props.lessonId)
     }
     componentDidUpdate(prevProps, prevState, snapshot){
-        this.props.findTopicsForLesson(this.props.lessonId)
+        if(prevProps.lessonId !== this.props.lessonId){
+            this.props.findTopicsForLesson(this.props.lessonId)
+        }
     }
     state = {
         activeTopicId: this.props.topicId,

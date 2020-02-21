@@ -8,6 +8,7 @@ const stateToPropertyMapper = (state) => ({
     modules: state.modules.modules
 })
 
+
 const dispatchToPropertyMapper = (dispatch) => ({
     createModule: (courseId, module) =>
         service.createModule(courseId, module)
