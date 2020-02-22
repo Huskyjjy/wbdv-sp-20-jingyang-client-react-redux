@@ -4,7 +4,6 @@ export default class Widget extends React.Component{
 
     state = {
         widget: this.props.widget,
-        context: "Heading text"
     }
     render() {
         return(
@@ -70,7 +69,10 @@ export default class Widget extends React.Component{
                     <input type="text" className="form-control" placeholder="Heading text" aria-label="Heading text"
                            aria-describedby="basic-addon1"
                         onChange={(e)=>{
-                            this.setState({context:e.target.value})
+                            let context = e.target.value
+                            let w = this.state.widget
+                            w.text = context
+                            this.props.updateWidget(this.props.widget.id,w)
                         }}/>
                 </div>}
                 {this.props.previewmode === 0 &&
@@ -109,8 +111,12 @@ export default class Widget extends React.Component{
                     <label className="font-weight-bold">Preview</label>
                 </div>}
                 <div>
-                    <h1>{this.state.context}</h1>
+                    <h1>{this.props.widget.text}</h1>
                 </div>
+{/*
+Here I "remembered" the input field and assigned it to the server side as a property of the widget. Due to my comprehension
+of requirements, I used widget.txt from the server side to be the default content of the preview section.
+*/}
                 <hr/>
             </div>
         )

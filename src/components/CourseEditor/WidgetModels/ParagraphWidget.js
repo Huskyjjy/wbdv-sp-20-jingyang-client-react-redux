@@ -43,9 +43,12 @@ export default class ParagraphWidget extends React.Component{
                 {this.props.previewmode === 0 &&
                 <div className="md-form">
                     <textarea id="form7" className="md-textarea form-control" rows="3" defaultValue={"Paragraph text"}
-                            onChange={(e)=>{
-                                this.setState({context:e.target.value})
-                            }}>
+                              onChange={(e)=>{
+                                  let context = e.target.value
+                                  let w = this.state.widget
+                                  w.text = context
+                                  this.props.updateWidget(this.props.widget.id,w)
+                              }}>
                     </textarea>
                 </div>}
                 {this.props.previewmode === 0 &&
@@ -58,8 +61,13 @@ export default class ParagraphWidget extends React.Component{
                     <label className="font-weight-bold">Preview</label>
                 </div>}
                 <div>
-                    <h1>{this.state.context}</h1>
+                    <h1>{this.props.widget.text}</h1>
                 </div>
+
+{/*
+Here I "remembered" the textarea and assigned it to the server side as a property of the widget. Due to my comprehension
+of requirements, I used widget.txt from the server side to be the default content of the preview section.
+*/}
                 <hr/>
             </div>
         )
