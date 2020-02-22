@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import service from "../services/WidgetService";
-import {findWidgetsForTopic,createWidget,updateWidget,deleteWidget} from "../actions/widgetActions";
+import {findWidgetsForTopic,createWidget,updateWidget,deleteWidget,updateAllWidgets} from "../actions/widgetActions";
 import WidgetComponent from '../components/CourseEditor/WidgetComponent'
 
 const stateToPropertyMapper = (state) => ({
@@ -21,12 +21,25 @@ const dispatchToPropertyMapper = (dispatch) => ({
         service.updateWidget(widgetId,widget)
             .then(status =>
                 dispatch(updateWidget(widget))),
-
     deleteWidget: (widgetId) =>
         service.deleteWidget(widgetId)
             .then(status =>
                 dispatch(deleteWidget(widgetId))
-            )
+            ),
+    updateAllWidgets: (widgets) =>
+        service.updateAllWidgets(widgets)
+            .then(status =>
+                dispatch(updateAllWidgets(widgets))),
+    moveUp: (widget) =>
+        dispatch({
+            type: 'MOVE_UP',
+            widget: widget
+        }),
+    moveDown: (widget) =>
+        dispatch({
+            type:'MOVE_DOWN',
+            widget: widget
+        })
 })
 
 const WidgetContainer = connect(

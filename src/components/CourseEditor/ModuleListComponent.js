@@ -8,7 +8,7 @@ export default class ModuleListComponent extends React.Component {
         this.props.findModulesForCourse(this.props.courseId)
     }
     componentDidUpdate(prevProps, prevState, snapshot){
-        if(prevState != this.state){
+        if(prevState !== this.state || prevProps.courseId !== this.props.courseId){
             this.props.findModulesForCourse(this.props.courseId)
         }
     }
@@ -80,13 +80,13 @@ export default class ModuleListComponent extends React.Component {
                         </li>
                         )
                 }
-                <li className="list-group-item">
+                {this.props.courseId && <li className="list-group-item">
                     <button className="float-right" onClick={
                         () => this.props.createModule(this.props.courseId, {title: 'New Module'})
                     }>
                         <i className="fa fa-plus"></i>
                     </button>
-                </li>
+                </li>}
             </ul>
         );
     }

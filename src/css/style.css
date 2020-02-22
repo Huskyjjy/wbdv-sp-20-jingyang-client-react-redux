@@ -1,3 +1,6 @@
 .inner{
     display: inline-block;
 }
+.right{
+    float: right;
+}

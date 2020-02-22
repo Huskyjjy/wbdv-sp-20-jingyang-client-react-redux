@@ -35,6 +35,18 @@ export const updateWidget = async (widgetId, widget) =>
 }
 //Return an integer, 1 for success and 0 for failure.
 
+export const updateAllWidgets = async (widgets) =>{
+    const response = await fetch(`${WIDGETS_API_URL}`, {
+        method: 'PUT',
+        body: JSON.stringify(widgets),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+    return await response.json()
+}
+//Return an integer, 1 for success and 0 for failure.
+
 export const findWidget = async (widgetId) => {
     const response = await fetch(`${WIDGETS_API_URL}/${widgetId}`)
     return await response.json()
@@ -44,5 +56,6 @@ export default {
     createWidget,
     deleteWidget,
     findWidgetForTopic,
-    updateWidget
+    updateWidget,
+    updateAllWidgets
 }

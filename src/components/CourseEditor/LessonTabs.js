@@ -10,7 +10,7 @@ class LessonTabs extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(prevState != this.state){
+        if(prevState !== this.state || prevProps.moduleId !== this.props.moduleId){
             this.props.findLessonsForModule(this.props.moduleId)
         }
 
@@ -92,9 +92,9 @@ class LessonTabs extends React.Component {
                             </a>
                         </li>)
                 }
-                <li className="nav-item">
+                {this.props.moduleId && <li className="nav-item">
                     <button onClick={() => this.props.addLesson(this.props.moduleId)}>+</button>
-                </li>
+                </li>}
             </ul>
         )
     }

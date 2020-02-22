@@ -17,6 +17,11 @@ export const createWidget = (widget) => ({
 export const UPDATE_WIDGET = "UPDATE_WIDGET"
 export const updateWidget = (widget) => ({
     type: UPDATE_WIDGET,
-    widgetId: widget._id,
+    widgetId: widget.id,
     widget: widget
+})
+export const UPDATE_ALL_WIDGETS = "UPDATE_All_Widgets"
+export const updateAllWidgets = (widgets) => ({
+    type: UPDATE_ALL_WIDGETS,
+    widgets: widgets
 })
