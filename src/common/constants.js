@@ -1,4 +1,3 @@
-
 export const COURSES_API_URL = "https://wbdv-generic-server.herokuapp.com/api/001051733/courses"
 export const MODULES_API_URL = "https://wbdv-generic-server.herokuapp.com/api/001051733/modules"
 export const LESSONS_API_URL = "https://wbdv-generic-server.herokuapp.com/api/001051733/lessons"
