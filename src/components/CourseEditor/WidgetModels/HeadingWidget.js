@@ -56,7 +56,8 @@ export default class Widget extends React.Component{
                         value={this.state.widget.type}>
                         <option value={"HEADING"}>Heading</option>
                         <option value={"PARAGRAPH"}>Paragraph</option>
-
+                        <option value={"LIST"}>List</option>
+                        <option value={"IMAGE"}>Image</option>
                     </select>
                     <button className="btn btn-primary"
                         onClick={()=>this.props.deleteWidget(this.props.widget.id)}>
@@ -71,6 +72,7 @@ export default class Widget extends React.Component{
                         onChange={(e)=>{
                             let context = e.target.value
                             let w = this.state.widget
+                            console.log(w)
                             w.text = context
                             this.props.updateWidget(this.props.widget.id,w)
                         }}/>

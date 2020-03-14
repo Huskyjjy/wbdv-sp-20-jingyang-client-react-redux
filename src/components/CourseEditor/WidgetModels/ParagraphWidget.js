@@ -21,6 +21,8 @@ export default class ParagraphWidget extends React.Component{
                             value={this.state.widget.type}>
                         <option value={"HEADING"}>Heading</option>
                         <option value={"PARAGRAPH"}>Paragraph</option>
+                        <option value={"LIST"}>List</option>
+                        <option value={"IMAGE"}>Image</option>
                     </select>
                     {this.props.index !== 0 &&
                     <button className="btn btn-primary"

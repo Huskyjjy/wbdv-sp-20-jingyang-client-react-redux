@@ -5,6 +5,7 @@ export default class WidgetComponent extends React.Component{
     //this.props.widgets from stateToPropertyMapper
     //this.props.createWidget(topicId, widget), findWidgetForTopic(topicId), updateWidget(widgetId, widget), deleteWidget(widgetId)
     componentDidMount() {
+        console.log(this.props.topicId)
         this.props.findWidgetForTopic(this.props.topicId)
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -24,6 +25,7 @@ export default class WidgetComponent extends React.Component{
                         <button
                             className="btn btn-success"
                             onClick={() => {
+                                console.log(this.props.widgets)
                                 this.props.updateAllWidgets(this.props.widgets)
                             }
                             }>

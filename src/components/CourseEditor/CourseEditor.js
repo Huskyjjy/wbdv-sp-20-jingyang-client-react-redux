@@ -52,7 +52,7 @@ const CourseEditor = ({hideEditor, match, history, courseId, moduleId, lessonId,
                         moduleId={moduleId}
                         courseId={courseId}
                         history={history}
-                        />
+                    />
                 </div>
 
             </div>

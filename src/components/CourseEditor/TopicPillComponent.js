@@ -5,6 +5,7 @@ import service from "../../services/TopicService"
 export default class TopicPillComponent extends React.Component {
 
     componentDidMount() {
+        console.log(this.props.lessonId)
         this.props.findTopicsForLesson(this.props.lessonId)
     }
     componentDidUpdate(prevProps, prevState, snapshot){
@@ -26,29 +27,33 @@ export default class TopicPillComponent extends React.Component {
                         <li className={`nav-item`}
                             onClick={
                                 () => {
-                                    const topicId = topic._id
+                                    const topicId = topic.id
                                     this.props.history.push(`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${topicId}`)
                                     this.setState({
-                                        activeTopicId: topic._id
+                                        activeTopicId: topic.id
                                     })
                                 }
                             }
-                            key={topic._id}
+                            key={topic.id}
                             >
                             <a className={`nav-item
-                                            ${(this.state.editingTopicId === topic._id || this.state.activeTopicId === topic._id)?'active':''}`}>
-                                {this.state.editingTopicId !== topic._id &&
+                                            ${(this.state.editingTopicId === topic.id || this.state.activeTopicId === topic.id)?'active':''}`}>
+                                {this.state.editingTopicId !== topic.id &&
                                 <span>{topic.title}</span>}
-                                {this.state.editingTopicId === topic._id &&
+                                {this.state.editingTopicId === topic.id &&
                                 <input
-                                onChange={(e) =>
-                                    this.setState({topic:{title: e.target.value}})
+                                onChange={(e) => {
+                                    let title = e.target.value
+                                    let w = this.state.topic
+                                    w.title = title
+                                    this.setState({topic:w})}
                                 }
                                     
                                     value={this.state.topic.title}/>}
-                                {this.state.editingTopicId === topic._id && 
+                                {this.state.editingTopicId === topic.id &&
                                 <button onClick={() =>
                                     {
+                                        console.log(this.state.topic)
                                         this.props.updateTopic(this.state.currID, this.state.topic)
                                             .then(() =>
                                                 this.setState({
@@ -60,17 +65,17 @@ export default class TopicPillComponent extends React.Component {
                                 }>
                                     <i className="fa fa-save"></i>
                                 </button>}
-                                {this.state.editingTopicId === topic._id && 
+                                {this.state.editingTopicId === topic.id &&
                                 <button onClick={
-                                    () => this.props.deleteTopic(topic._id)}>
+                                    () => this.props.deleteTopic(topic.id)}>
                                     <i className="fa fa-trash"></i>
                                 </button>}
-                                {this.state.editingTopicId !== topic._id && 
+                                {this.state.editingTopicId !== topic.id &&
                                 <button onClick={() => {
                                     this.setState({
                                         topic: topic,
-                                        currID: topic._id,
-                                        editingTopicId: topic._id
+                                        currID: topic.id,
+                                        editingTopicId: topic.id
                                     })
                                 }}>
                                     <i className="fa fa-pencil"></i>
